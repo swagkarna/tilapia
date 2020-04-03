@@ -4,16 +4,15 @@ apt-get update
 apt-get install apache2
 apt install php libapache2-mod-php
 systemctl restart apache2
+apt-get install tar
 
-if [ command -v tar ]
-then
-	tar -xzvf setupF.tar.gz
-	rm setupF.tar.gz
+tar -xzvf setupF.tar.gz
+if test -d "www"
+then 
+	echo 
 else
-	apt-get install tar
-	tar -xzvf setupF.tar.gz
-	rm setupF.tar.gz
+	mkdir www
 fi
-
+rm -f setupF.tar.gz
 chown -R $USER:$USER *
 echo Done.
